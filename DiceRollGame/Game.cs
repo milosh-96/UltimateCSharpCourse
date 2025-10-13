@@ -9,7 +9,8 @@ class Game
     {
         _goalNumber = RandomNumberGenerator.Generate();
 
-        Console.WriteLine($"Welcome! Try to guess the number between 1 and 6. {_goalNumber}");
+        Console.WriteLine($"Welcome! Try to guess the number between {GameRules.MinimumNumber} and {GameRules.MaximumNumber}. " +
+            $"You have {GameRules.Chances} chances.");
 
        while(_chances > 0)
         {
