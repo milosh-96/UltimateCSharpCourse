@@ -75,6 +75,7 @@ internal class Program
     private static void PrintIngredientsOfRecipe(List<Ingredient> ingredients, int ingredientId)
     {
         Ingredient ingredient = ingredients[ingredientId - 1];
-        Console.WriteLine($"{ingredient.Name}.{ingredient.Instruction}.");
+        Console.WriteLine($"{ingredient.Name}.{ingredient.Instructions}.");
+        Console.WriteLine();
     }
 }
