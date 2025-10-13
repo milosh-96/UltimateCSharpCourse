@@ -1,4 +1,5 @@
 ﻿using CookieCookbook.Readers;
+using CookieCookbook.Repositories;
 using CookieCookbook.Shells;
 using CookieCookbook.Writers;
 using System.Text.Json;
@@ -9,23 +10,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Shell shell = new JsonShell();
-        var ingredients = new List<Ingredient>()
-        {
-            new Ingredient() { Id = 1, Name = "Wheat flour" },
-            new Ingredient() { Id = 2, Name = "Coconut flour" },
-            new Ingredient() { Id = 3, Name = "Butter" },
-            new Ingredient() { Id = 4, Name = "Chocolate" },
-            new Ingredient() { Id = 5, Name = "Sugar" },
-            new Ingredient() { Id = 6, Name = "Cardamom" },
-            new Ingredient() { Id = 7, Name = "Cinnamon" },
-            new Ingredient() { Id = 8, Name = "Cocoa powder" },
-        };
+        Shell shell = Settings.RecipeFileFormat == Enums.FileFormat.Txt ? new TxtShell() : new JsonShell();
+        var ingredients = IngredientsRepository.Ingredients;
 
+        shell.LoadRecipes();
 
-        shell.Read();
-
-        if(shell.Recipes.Count > 0)
+        if(shell.Recipes != null && shell.Recipes.Count > 0)
         {
             Console.WriteLine("***** Existing recipes are: *****" + Environment.NewLine);
             for (int i = 0; i < shell.Recipes.Count; i++)
@@ -34,8 +24,7 @@ internal class Program
 
                 foreach (int ingredientId in shell.Recipes[i])
                 {
-                    Ingredient ingredient = ingredients[ingredientId];
-                    Console.WriteLine($"{ingredient.Name}.{ingredient.Instruction}.");
+                    PrintIngredientsOfRecipe(ingredients, ingredientId);
                 }
             }
         }
@@ -46,9 +35,6 @@ internal class Program
         {
             Console.WriteLine($"{ingredient.Id}. {ingredient.Name}");
         }
-
-
-
 
         int userInput;
 
@@ -72,8 +58,7 @@ internal class Program
 
             foreach (int ingredientId in recipe)
             {
-                Ingredient ingredient = ingredients.Where(item => item.Id == ingredientId).First();
-                Console.WriteLine($"{ingredient.Name}.{ingredient.Instruction}.");
+                PrintIngredientsOfRecipe(ingredients, ingredientId);
             }
             shell.Write();
 
@@ -85,5 +70,11 @@ internal class Program
 
         Console.WriteLine("Press any key to exit.");
         Console.ReadKey();
+    }
+
+    private static void PrintIngredientsOfRecipe(List<Ingredient> ingredients, int ingredientId)
+    {
+        Ingredient ingredient = ingredients[ingredientId - 1];
+        Console.WriteLine($"{ingredient.Name}.{ingredient.Instruction}.");
     }
 }
