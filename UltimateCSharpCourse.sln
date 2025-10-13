@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList\ToDoLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceRollGame", "DiceRollGame\DiceRollGame.csproj", "{1DF538F3-6824-47C1-84D3-706C0B36213F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieCookbook", "CookieCookbook\CookieCookbook.csproj", "{C6E7648D-B5A1-470A-8E6F-EB37A03C09DC}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsProcessing", "StringsProcessing\StringsProcessing.csproj", "{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}"
 EndProject
 Global
@@ -29,6 +31,10 @@ Global
 		{1DF538F3-6824-47C1-84D3-706C0B36213F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF538F3-6824-47C1-84D3-706C0B36213F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF538F3-6824-47C1-84D3-706C0B36213F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E7648D-B5A1-470A-8E6F-EB37A03C09DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E7648D-B5A1-470A-8E6F-EB37A03C09DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E7648D-B5A1-470A-8E6F-EB37A03C09DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E7648D-B5A1-470A-8E6F-EB37A03C09DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
