@@ -9,8 +9,4 @@ using System.Threading.Tasks;
 namespace CookieCookbook.Shells;
 public class TxtShell : Shell
 {
-    public TxtShell()
-    {
-        recipeReader = new TextualRecipeReader();
-    }
 }

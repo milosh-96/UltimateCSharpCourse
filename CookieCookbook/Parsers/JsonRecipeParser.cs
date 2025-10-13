@@ -6,9 +6,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CookieCookbook.Readers;
-public class JsonRecipeReader : IRecipeReader
+public class JsonRecipeParser : IRecipeParser
 {
-    public List<List<int>> Read(string fileName)
+    public List<List<int>> Parse(string fileName)
     {
         List<List<int>> recipes = new List<List<int>>();
 
@@ -17,7 +17,7 @@ public class JsonRecipeReader : IRecipeReader
             var fileReader = new StreamReader(fileName);
 
             string recipeJson = fileReader.ReadToEnd();
-            recipes = JsonSerializer.Deserialize<List<List<int>>>(recipeJson);
+            recipes  = JsonSerializer.Deserialize<List<List<int>>>(recipeJson);
             fileReader.Close();
         }
         catch (Exception ex)

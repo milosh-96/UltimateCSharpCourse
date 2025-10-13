@@ -12,19 +12,12 @@ public class JsonShell : Shell
 {
     public JsonShell()
     {
-        recipeReader = new JsonRecipeReader();
+        recipeParser = new JsonRecipeParser();
         FileExtension = "json";
     }
 
     public override void Write()
     {
-        var temp = new List<string>();
-
-        foreach(var recipe in Recipes)
-        {
-            temp.Add(string.Join(',', recipe));
-        }
-
-        RecipeWriter.Write(Settings.RecipeFileName + "." + FileExtension, JsonSerializer.Serialize(Recipes));
+        RecipeWriter.Write(Settings.RecipeFileName + "." + FileExtension, JsonSerializer.Serialize(Recipes), false);
     }
 }

@@ -10,12 +10,12 @@ namespace CookieCookbook.Shells;
 public abstract class Shell
 {
     public List<List<int>> Recipes { get; set; } = new List<List<int>>();
-    public IRecipeReader recipeReader;
+    public IRecipeParser recipeParser = new TextRecipeParser();
     public string FileExtension { get; set; } = "txt";
     
-    public virtual void Read()
+    public virtual void LoadRecipes()
     {
-        Recipes = recipeReader.Read(Settings.RecipeFileName + "." + FileExtension);
+        Recipes = recipeParser.Parse(Settings.RecipeFileName + "." + FileExtension);
     }
 
     public virtual void Write()

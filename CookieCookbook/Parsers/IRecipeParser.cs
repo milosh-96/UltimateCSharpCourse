@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CookieCookbook.Readers;
-public interface IRecipeReader
+public interface IRecipeParser
 {
-    List<List<int>> Read(string fileName);
+    List<List<int>> Parse(string fileName);
 }
