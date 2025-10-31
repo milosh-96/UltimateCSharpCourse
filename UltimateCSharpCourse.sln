@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieCookbook", "CookieCoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsProcessing", "StringsProcessing\StringsProcessing.csproj", "{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataParser", "GameDataParser\GameDataParser.csproj", "{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFFB4C07-132D-465F-81BC-6F1E614FB0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
