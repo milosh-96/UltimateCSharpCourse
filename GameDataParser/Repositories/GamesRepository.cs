@@ -1,28 +1,31 @@
 ﻿using GameDataParser.Data;
 using GameDataParser.Helpers;
-using GameDataParser.Inputs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 
-namespace GameDataParser.Operations;
+namespace GameDataParser.Repositories;
 
-public class GamesFromJsonOperation : IGamesOperation
+public class GamesRepository : IGamesRepository
 {
     private readonly IFileReader fileReader;
 
-    public GamesFromJsonOperation(IFileReader fileReader)
+    private List<Game> games = new List<Game>();
+    public GamesRepository(IFileReader fileReader)
     {
         this.fileReader = fileReader;
     }
 
-    public List<Game> LoadGames(string fileName)
+    public List<Game> All()
+    {
+        return games;
+    }
+
+    public void Load(string fileName)
     {
         string contents = fileReader.Read(fileName);
         try
         {
-            return JsonSerializer.Deserialize<List<Game>>(contents);
+            var parsedGames = JsonSerializer.Deserialize<List<Game>>(contents);
+            games.AddRange(parsedGames);
         }
         catch (JsonException ex)
         {

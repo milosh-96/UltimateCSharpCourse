@@ -1,20 +1,20 @@
 ﻿using GameDataParser.Inputs;
-using GameDataParser.Operations;
+using GameDataParser.Repositories;
 using GameDataParser.Outputs;
 
 namespace GameDataParser;
 
 public class GameDataParserApp : IGameDataParserApp
 {
-    private readonly IGamesOperation gamesOperation;
-    private readonly IGamesDisplay gamesDisplay;
-    private readonly IUserInput userInput;
+    private readonly IGamesRepository _gamesRepository;
+    private readonly IGamesDisplay _gamesDisplay;
+    private readonly IUserInput _userInput;
 
-    public GameDataParserApp(IGamesOperation gamesOperation, IGamesDisplay gamesDisplay, IUserInput userInput)
+    public GameDataParserApp(IGamesRepository gamesRepository, IGamesDisplay gamesDisplay, IUserInput userInput)
     {
-        this.gamesOperation = gamesOperation;
-        this.gamesDisplay = gamesDisplay;
-        this.userInput = userInput;
+        _gamesRepository = gamesRepository;
+        _gamesDisplay = gamesDisplay;
+        _userInput = userInput;
     }
 
     public void Run()
@@ -23,9 +23,9 @@ public class GameDataParserApp : IGameDataParserApp
         bool fileExists = false;
         do
         {
-            var input = userInput.Enter("Enter file name: ");
+            var input = _userInput.Get("Enter file name: ");
 
-            if (userInput.IsNotNullAndEmpty())
+            if (_userInput.IsNotNullAndEmpty())
             {
                 fileName = input;
             }
@@ -33,8 +33,8 @@ public class GameDataParserApp : IGameDataParserApp
             if (File.Exists(fileName))
             {
                 fileExists = true;
-                var games = gamesOperation.LoadGames(fileName);
-                gamesDisplay.Show(games);
+                _gamesRepository.Load(fileName);
+                _gamesDisplay.Show(_gamesRepository.All());
             }
             else
             {

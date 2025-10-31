@@ -1,6 +1,6 @@
 ﻿using GameDataParser.Helpers;
 using GameDataParser.Inputs;
-using GameDataParser.Operations;
+using GameDataParser.Repositories;
 using GameDataParser.Outputs;
 
 namespace GameDataParser;
@@ -11,7 +11,7 @@ internal class Program
     {
         try
         {
-            IGameDataParserApp app = new GameDataParserApp(new GamesFromJsonOperation(new FileReader()), new GamesDisplay(), new UserInput());
+            IGameDataParserApp app = new GameDataParserApp(new GamesRepository(new FileReader()), new GamesDisplay(), new UserInput());
             app.Run();
         }
         catch(Exception ex)

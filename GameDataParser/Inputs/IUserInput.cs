@@ -2,6 +2,6 @@
 
 public interface IUserInput
 {
-    string Enter(string message);
+    string Get(string message);
     bool IsNotNullAndEmpty();
 }

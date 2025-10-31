@@ -3,7 +3,7 @@
 public class UserInput : IUserInput
 {
     private string input;
-    public string Enter(string message)
+    public string Get(string message)
     {
         Console.WriteLine(message);
         input = Console.ReadLine();
