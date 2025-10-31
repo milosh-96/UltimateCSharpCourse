@@ -1,15 +1,16 @@
-﻿
-namespace GameDataParser.Inputs;
+﻿namespace GameDataParser.Inputs;
 
-internal class UserInput
+public class UserInput : IUserInput
 {
-    public static string Enter(string message)
+    private string input;
+    public string Enter(string message)
     {
         Console.WriteLine(message);
-        return Console.ReadLine();
+        input = Console.ReadLine();
+        return this.input;
     }
 
-    public static bool IsNotNullAndEmpty(string input)
+    public bool IsNotNullAndEmpty()
     {
         if (input == null)
         {

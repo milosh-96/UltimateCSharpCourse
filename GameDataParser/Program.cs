@@ -1,4 +1,5 @@
 ﻿using GameDataParser.Helpers;
+using GameDataParser.Inputs;
 using GameDataParser.Operations;
 using GameDataParser.Outputs;
 
@@ -10,7 +11,7 @@ internal class Program
     {
         try
         {
-            IGameDataParserApp app = new GameDataParserApp(new GamesFromJsonOperation(new FileReader()), new GamesDisplay());
+            IGameDataParserApp app = new GameDataParserApp(new GamesFromJsonOperation(new FileReader()), new GamesDisplay(), new UserInput());
             app.Run();
         }
         catch(Exception ex)

@@ -1,11 +1,7 @@
 ﻿using GameDataParser.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameDataParser.Outputs;
+
 public class GamesDisplay : IGamesDisplay
 {
     public void Show(IEnumerable<Game> games)

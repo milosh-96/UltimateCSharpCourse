@@ -1,8 +1,6 @@
-﻿using GameDataParser.Helpers;
-using GameDataParser.Inputs;
+﻿using GameDataParser.Inputs;
 using GameDataParser.Operations;
 using GameDataParser.Outputs;
-using System.Text.Json;
 
 namespace GameDataParser;
 
@@ -10,11 +8,13 @@ public class GameDataParserApp : IGameDataParserApp
 {
     private readonly IGamesOperation gamesOperation;
     private readonly IGamesDisplay gamesDisplay;
+    private readonly IUserInput userInput;
 
-    public GameDataParserApp(IGamesOperation gamesOperation, IGamesDisplay gamesDisplay)
+    public GameDataParserApp(IGamesOperation gamesOperation, IGamesDisplay gamesDisplay, IUserInput userInput)
     {
         this.gamesOperation = gamesOperation;
         this.gamesDisplay = gamesDisplay;
+        this.userInput = userInput;
     }
 
     public void Run()
@@ -23,9 +23,9 @@ public class GameDataParserApp : IGameDataParserApp
         bool fileExists = false;
         do
         {
-            var input = UserInput.Enter("Enter file name: ");
+            var input = userInput.Enter("Enter file name: ");
 
-            if (UserInput.IsNotNullAndEmpty(input))
+            if (userInput.IsNotNullAndEmpty())
             {
                 fileName = input;
             }
@@ -43,6 +43,5 @@ public class GameDataParserApp : IGameDataParserApp
 
         }
         while (fileName == null || fileExists == false);
-
     }
 }
