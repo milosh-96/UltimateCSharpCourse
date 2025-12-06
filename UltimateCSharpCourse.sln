@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsProcessing", "String
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataParser", "GameDataParser\GameDataParser.csproj", "{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCache", "Caching\CustomCache.csproj", "{90B9162C-EAD4-4941-8F87-AFF7759D31E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA811747-C9E0-45E7-B241-5C2EC3F7F4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B9162C-EAD4-4941-8F87-AFF7759D31E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B9162C-EAD4-4941-8F87-AFF7759D31E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B9162C-EAD4-4941-8F87-AFF7759D31E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B9162C-EAD4-4941-8F87-AFF7759D31E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
