@@ -42,6 +42,6 @@ public class GameDataParserApp : IGameDataParserApp
             }
 
         }
-        while (fileName == null || fileExists == false);
+        while (fileName is null || fileExists == false);
     }
 }
