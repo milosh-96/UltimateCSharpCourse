@@ -1,16 +1,16 @@
 ﻿using CustomCache.Caching;
 
 namespace CustomCache.Data;
-public class SlowDataDownloader : IDataDownloader<string, string>
+public class SlowDateTimeDownloader : IDataDownloader<int, DateTime>
 {
-    private readonly ICachingManager<string, string> cachingManager;
+    private readonly ICachingManager<int, DateTime> cachingManager;
 
-    public SlowDataDownloader(ICachingManager<string, string> cachingManager)
+    public SlowDateTimeDownloader(ICachingManager<int, DateTime> cachingManager)
     {
         this.cachingManager = cachingManager;
     }
 
-    public string DownloadData(string resourceId)
+    public DateTime DownloadData(int resourceId)
     {
         if (cachingManager.Has(resourceId))
         {
@@ -22,7 +22,7 @@ public class SlowDataDownloader : IDataDownloader<string, string>
         Thread.Sleep(2000);
 
         //cache here
-        string data = $"Some data for {resourceId}";
+        DateTime data = DateTime.Now;
         cachingManager.Add(resourceId, data);
         return data;
     }

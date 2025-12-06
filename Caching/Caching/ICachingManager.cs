@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CustomCache.Caching;
-public interface ICachingManager
+public interface ICachingManager<TKey, TValue>
 {
-    void Add(string resourceId, string data);
-    string Get(string resourceId);
-    bool Has(string resourceId);
+    void Add(TKey key, TValue data);
+    TValue Get(TKey key);
+    bool Has(TKey key);
+
+    void Remove(TKey key);
 }

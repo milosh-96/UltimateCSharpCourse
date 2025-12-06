@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CustomCache.Caching;
 
-namespace CustomCache.Caching;
-public class CachingManager : ICachingManager
+public class CachingManager<TKey, TValue> : ICachingManager<TKey, TValue>
 {
-    private Dictionary<string, string> _data = new Dictionary<string, string>();
+    private Dictionary<TKey, TValue> _data = new Dictionary<TKey, TValue>();
 
-    public void Add(string key, string data)
+    public void Add(TKey key, TValue data)
     {
         _data.Add(key, data);
     }
 
-    public string Get(string key) => _data.GetValueOrDefault(key);
+    public TValue Get(TKey key) => _data.GetValueOrDefault(key);
 
-    public bool Has(string key) => _data.ContainsKey(key);
+    public bool Has(TKey key) => _data.ContainsKey(key);
+
+    public void Remove(TKey key)
+    {
+        _data.Remove(key);
+    }
 }

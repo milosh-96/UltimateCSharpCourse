@@ -1,6 +1,6 @@
 ﻿namespace CustomCache.Data;
 
-public interface IDataDownloader
+public interface IDataDownloader<TKey, TValue>
 {
-    string DownloadData(string resourceId);
+    TValue DownloadData(TKey resourceId);
 }
