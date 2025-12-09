@@ -1,29 +1,11 @@
-﻿using CustomCache.Caching;
-
-namespace CustomCache.Data;
+﻿namespace CustomCache.Data;
 public class SlowDataDownloader : IDataDownloader<string, string>
 {
-    private readonly ICachingManager<string, string> cachingManager;
-
-    public SlowDataDownloader(ICachingManager<string, string> cachingManager)
-    {
-        this.cachingManager = cachingManager;
-    }
-
     public string DownloadData(string resourceId)
     {
-        if (cachingManager.Has(resourceId))
-        {
-            return cachingManager.Get(resourceId);
-        }
-
         //let's imagine this method downloads real data,
         //and it does it slowly
-        Thread.Sleep(2000);
-
-        //cache here
-        string data = $"Some data for {resourceId}";
-        cachingManager.Add(resourceId, data);
-        return data;
+        Thread.Sleep(1000);
+        return $"Some data for {resourceId}";
     }
 }
