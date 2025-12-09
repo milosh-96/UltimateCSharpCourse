@@ -19,7 +19,7 @@ public class DataDownloadApp : IApp
         Console.WriteLine(dataDownloader.DownloadData("id2"));
 
         IDataDownloader<int, DateTime> dataDownloader2 = new CachingDataDownloader<int, DateTime>(
-            new SlowDateTimeDownloader(new CachingManager<int, DateTime>()),
+            new SlowDateTimeDownloader(),
             new CachingManager<int, DateTime>());
         Console.WriteLine(dataDownloader2.DownloadData(1));
         Console.WriteLine(dataDownloader2.DownloadData(2));
