@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
+using TicketsAggregator.Localization;
 using TicketsAggregator.Models;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TicketsAggregator.Parsers;
+
 internal static class TicketParser
 {
     public static List<Ticket> ParseTicketsFromPDF(PdfDocument document)
@@ -77,19 +72,19 @@ internal static class TicketParser
     {
         if (text.Contains(".com"))
         {
-            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            CultureManager.SetCurrentCultureOrUseInvariant(CultureInfo.GetCultureInfo("en-US"));
         }
         else if (text.Contains(".jp"))
         {
-            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("ja-JP");
+            CultureManager.SetCurrentCultureOrUseInvariant(CultureInfo.GetCultureInfo("en-US"));
         }
         else if (text.Contains(".fr"))
         {
-            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("fr-FR");
+            CultureManager.SetCurrentCultureOrUseInvariant(CultureInfo.GetCultureInfo("en-US"));
         }
         else
         {
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureManager.SetCurrentCultureOrUseInvariant();
         }
     }
 }
