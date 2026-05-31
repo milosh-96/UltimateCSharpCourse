@@ -17,9 +17,27 @@ internal static class TicketParser
     {
         List<Ticket> tickets = new List<Ticket>();
 
-        List<string> titles = new List<string>();
-        List<string> dates = new List<string>();
-        List<string> times = new List<string>();
+        Dictionary<string, List<string>> lineData = ExtractDataFromDocument(document);
+
+        for (int i = 0; i < lineData["titles"].Count; i++)
+        {
+            tickets.Add(new Ticket()
+            {
+                Title = lineData["titles"][i],
+                Start = DateTime.Parse($"{lineData["dates"][i]} {lineData["times"][i]}", CultureInfo.CurrentCulture)
+            });
+        }
+        return tickets;
+    }
+
+    private static Dictionary<string, List<string>> ExtractDataFromDocument(PdfDocument document)
+    {
+        Dictionary<string, List<string>> lineData = new Dictionary<string, List<string>>()
+        {
+            { "titles", new List<string>() },
+            { "dates", new List<string>() },
+            { "times", new List<string>() }
+        };
         List<CultureInfo> cultures = new List<CultureInfo>();
 
         foreach (var page in document.GetPages())
@@ -34,7 +52,7 @@ internal static class TicketParser
 
                 if (line.StartsWith(titleProperty))
                 {
-                    titles.Add(line.Replace("\r", "").Replace(": ", "").Replace(titleProperty, "").ReplaceLineEndings());
+                    lineData["titles"].Add(line.Replace("\r", "").Replace(": ", "").Replace(titleProperty, "").ReplaceLineEndings());
                 }
 
 
@@ -42,26 +60,17 @@ internal static class TicketParser
                 if (line.StartsWith(dateProperty))
                 {
                     string date = line.Replace("\r", "").Replace(": ", "").Replace(dateProperty, "").ToString().ReplaceLineEndings();
-                    dates.Add(date);
+                    lineData["dates"].Add(date);
                 }
 
                 string timeProperty = "Time";
                 if (line.StartsWith(timeProperty))
                 {
-                    times.Add(line.Replace("\r", "").Replace(": ", "").Replace(timeProperty, "").ToString().ReplaceLineEndings());
+                    lineData["times"].Add(line.Replace("\r", "").Replace(": ", "").Replace(timeProperty, "").ToString().ReplaceLineEndings());
                 }
             }
         }
-
-        for (int i = 0; i < titles.Count; i++)
-        {
-            tickets.Add(new Ticket()
-            {
-                Title = titles[i],
-                Start = DateTime.Parse($"{dates[i]} {times[i]}", CultureInfo.CurrentCulture)
-            });
-        }
-        return tickets;
+        return lineData;
     }
 
     private static void SetCultureBasedOnDomainOrUseInvariant(string text)
