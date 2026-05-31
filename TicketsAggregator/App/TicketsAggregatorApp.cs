@@ -6,6 +6,7 @@ using TicketsAggregator.Localization;
 using TicketsAggregator.UserInteraction;
 
 namespace TicketsAggregator.App;
+
 internal class TicketsAggregatorApp
 {
     private readonly List<ITicketsWriter> writers;
