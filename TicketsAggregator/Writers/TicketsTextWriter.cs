@@ -2,6 +2,7 @@
 using TicketsAggregator.Models;
 
 namespace TicketsAggregator.Writers;
+
 internal class TicketsTextWriter : TicketsWriter
 {
     public TicketsTextWriter(string fileName) : base(fileName)
